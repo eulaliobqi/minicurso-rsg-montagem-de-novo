@@ -18,6 +18,8 @@ Pós-graduandos e pesquisadores que já sabem o que é RNA-Seq, mas nunca precis
 ```
 Minicurso-rsg/
 ├── material-teorico/     # conteúdo teórico dos 8 módulos (Markdown)
+├── Script/                # scripts do pipeline, versão genérica e comentada
+├── Artigos/               # artigos de referência sobre montagem de novo em não-modelo
 └── Apresentação/          # slides finais em PowerPoint (.pptx)
 ```
 
@@ -53,7 +55,28 @@ Material de apoio, consultável a qualquer momento durante ou após o curso:
 
 ## Scripts e pipelines
 
-Em breve: scripts práticos (QC, montagem, anotação, quantificação) serão adicionados a este repositório para acompanhar o material teórico.
+**[`Script/scripts.md`](Script/scripts.md)** reúne, em um único documento comentado, a lógica central de cada etapa do pipeline usado no curso — versão generalizada e resumida, pensada para leitura em aula:
+
+1. Controle de qualidade e trimagem de reads (FastQC, fastp, MultiQC)
+2. Montagem *de novo* (Trinity, CD-HIT-EST, TransDecoder)
+3. Avaliação de qualidade da montagem (TrinityStats, BUSCO)
+4. Anotação funcional (DIAMOND, TaxonKit, eggNOG-mapper, Pfam/HMMER)
+5. Visualização (figuras de anotação, QC de montagem, GO/KEGG)
+6. Triagem de endossimbiontes a partir da anotação já gerada
+7. Predição de secretoma (SignalP + TMHMM) — etapa pendente de execução
+
+Cada seção aponta o script de produção completo correspondente (com tratamento de erro, retomada de execução e logging), além de duas lições reais do projeto que valem a leitura: um bug de parsing por índice de coluna hardcoded no eggNOG-mapper, e o critério de corte usado para secretoma clássico.
+
+## Artigos de referência
+
+A pasta **[`Artigos/`](Artigos/)** reúne quatro artigos usados como referência para o desenho do pipeline, todos aplicando montagem *de novo* de transcriptoma a organismos não-modelo:
+
+| Arquivo | Referência |
+|---|---|
+| [`Assadi-2022.pdf`](Artigos/Assadi-2022.pdf) | Sheikh-Assadi, M. et al. Normalized Workflow to Optimize Hybrid De Novo Transcriptome Assembly for Non-Model Species: A Case Study in *Lilium ledebourii*. *Plants*, 2022. |
+| [`Duarte-2021.pdf`](Artigos/Duarte-2021.pdf) | Duarte, G. T.; Volkova, P. Yu.; Geras'kin, S. A. A Pipeline for Non-model Organisms for de novo Transcriptome Assembly, Annotation, and Gene Ontology Analysis Using Open Tools: Case Study with Scots Pine. *Bio-protocol*, 11(03): e3912, 2021. |
+| [`Joshi-2024.pdf`](Artigos/Joshi-2024.pdf) | Joshi, J.; Wang-Pruski, G. De novo transcriptome assembly and differential gene expression analysis in different developmental stages of *Agriotes sputator* (click beetle). *Scientific Reports*, 2024. |
+| [`Santillan-2019.pdf`](Artigos/Santillan-2019.pdf) | Moreno-Santillán, D. D. et al. De Novo Transcriptome Assembly and Functional Annotation in Five Species of Bats. *Scientific Reports*, 2019. |
 
 ## Licença e uso
 
